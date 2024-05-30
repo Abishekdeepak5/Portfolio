@@ -463,15 +463,65 @@ section {
 .pro-image img{
   width: 100%;
   /* height:inherit; */
-  object-fit: cover;
-  aspect-ratio: 1/1;
+  /* object-fit: cover;
+  aspect-ratio: 1/1; */
+  height: 100%;
+  background-color: white;
   transition: 0.5s ease;
   border-radius: 3px;
   position: absolute;
   left:0;
   z-index: 1;
-  /* transform: scale(1.1); */
 }
+
+.playbtn{
+  width:100%;
+  text-align: center;
+  /* background:#efeeee; */
+  display:grid;
+  place-items:center;
+}
+/* .playbtn:hover{
+  background-color: white;
+} */
+.btn-container{
+  display:grid;
+  place-items:center;
+  cursor:pointer;
+  padding:1.5rem 1.3rem 1.5rem 1.7rem;
+  border-radius:50%;
+  transition:all 0.3s ease-in;
+   box-shadow: inset 10px 10px 10px rgba(255,255,255,0.3),
+   inset -10px -10px 10px rgba(255,255,255,0.3);
+   background-color: #6d9ac5;
+}
+.btn-container .fas{
+  display:grid;
+  place-items:center;
+  font-size:3rem;
+  color: #efeeee;
+  /* color:red */
+}
+
+.btn-container:active .fas{
+  /* color:#721efa; */
+  color:white;
+  /* background-color:white; */
+}
+.btn-container:hover .fas{
+  /* color:#721efa; */
+  color:white;
+  /* background-color:white; */
+}
+.btn-container:active{
+  /* background-color:#9bb7c4; */
+  background-color:#0678e3;
+}
+.btn-container:hover{
+  /* background-color:#9bb7c4; */
+  background-color:#0678e3;
+}
+
 .hideProImage{
   visibility: hidden;
 }
@@ -495,8 +545,6 @@ section {
 }
 
 .playBut {
-/*  border: 1px solid red;*/
-  /* display: inline-block; */
   -webkit-transition: all 0.5s ease;
   
   .triangle {
@@ -847,7 +895,7 @@ section {
 .timeline-content {
   width: 95%;
   padding: 0 15px;
-  color: #666;
+  /* color: #666; */
   display: flex;
   flex-direction: column;
 }
@@ -860,20 +908,20 @@ section {
   width: 100%;
 }
 
-.timeline-item-left * {
+/* .timeline-item-left * {
   text-align: end;
-}
-
+} */
+/* 
 .timeline-content span {
   font-size: 15px;
   color: #a4a4a4;
-}
+} */
 
 .timeline-content p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5em;
   word-spacing: 1px;
-  color: #888;
+  color: #666;
 }
 
 
@@ -1174,6 +1222,9 @@ section {
   .timeline-item-left * {
     text-align: start;
   }
+  .timeline-item-right * {
+    text-align: start;
+  }
 
   .timeline-item-left::after {
     right: auto;
@@ -1185,7 +1236,20 @@ section {
   }
 }
 
+.myimg img{
+  border-radius: 10px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 35px -10px;
+}
 
+@media screen and (max-width: 990px) {
+  .myname{
+    padding-top: 1em;
+  }
+}
+.techstack{
+  color:rgb(53, 53, 53);
+  font-size:medium;
+}
 /* .video-container {
   position: relative;
   width:100%;

@@ -5,7 +5,19 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('emailform');
+  form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      let fname=form.fname.value;
+      let lname=form.lname.value;
+      let subject=form.subject.value;
+      let msg=form.message.value;
+      console.log(fname,lname);
+      window.location.href=`mailto:abishekdeepakff@gmail.com?subject=${encodeURIComponent(subject)}&body=I%20am%20${encodeURIComponent(fname)}%20${encodeURIComponent(lname)},%0A%09%09%09${encodeURIComponent(msg)}`;
+      form.reset();
+  });
+});
 (function() {
   "use strict";
 
@@ -278,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
     container.classList.add('playBut');
     var newElement=document.createElement("div");
     newElement.classList.add('play-symbol');
+    if(window.innerWidth>600){
     newElement.innerHTML=`
     <div class='container'>
     <a class='playBut'>        
@@ -295,6 +308,15 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 
     `;
+  }else{
+    newElement.innerHTML=`
+    <div class="playbtn">
+       <div class="btn-container playBut">
+         <i class="fas fa-play"></i>
+       </div> 
+     </div>
+    `;
+  }
     container.appendChild(newElement);
   });
 
@@ -315,7 +337,6 @@ document.addEventListener('DOMContentLoaded', function() {
   videos.forEach((mediaContainer)=>{
   try{
       var video=mediaContainer.querySelector('video');
-      console.log(video);
       var progressBar = mediaContainer.querySelector('.progress');
       var clickImage=mediaContainer.querySelector('img');
       var playBtn=mediaContainer.querySelector('.play-symbol');
@@ -335,7 +356,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 try{
                   proimage.classList.remove('hideProImage');
                   playButton.classList.remove('hideProImage');
-                  console.log(othervideo);
                     othervideo.pause();
 
                 }catch(err){}
@@ -380,7 +400,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
  
 });
+window.onload = function() {
 
+  // https://firebasestorage.googleapis.com/v0/b/website-325dd.appspot.com/o/ProjectVideo%2FFood%20delivery%20website%20-%20Made%20with%20Clipchamp.mp4?alt=media&token=22d1e4c4-84e6-4eb2-a351-c9c2374f197e
+  // https://firebasestorage.googleapis.com/v0/b/website-325dd.appspot.com/o/ProjectVideo%2FHomeWithVoiceAssistant.mp4?alt=media&token=2213a4e2-d909-4388-baf4-1f8e4a18f437
+  // https://firebasestorage.googleapis.com/v0/b/website-325dd.appspot.com/o/ProjectVideo%2FChatApp.mp4?alt=media&token=fcdd21fd-765f-41ad-aaca-3032786c7c77
+  var images = document.querySelectorAll('img[data-src]');
+  
+  var imageno=[6,5,4,1,2,3];
+  let i=0;
+  images.forEach(function(img) {
+    if(i<6){
+      if (navigator.onLine) {
+        img.src=`https://firebasestorage.googleapis.com/v0/b/website-325dd.appspot.com/o/projectImage%2F${imageno[i]}.png?alt=media&token=09bd6c81-bf62-4a23-b181-6675248ce7bc`;
+        // img.src="";
+        console.log("You are online.");
+      } else {
+        img.src="assets/img/code-solid.svg";
+        console.log("You are offline.");
+      }
+    }
+    i++;
+  });
+  var videos = document.querySelectorAll('source[data-source]');
+  var vidsrc=["Food%20delivery%20website%20-%20Made%20with%20Clipchamp.mp4","HomeWithVoiceAssistant.mp4","ChatApp.mp4"];
+  let j=0;
+  videos.forEach(function(video) {
+    if(j<4){
+      if (navigator.onLine) {
+        video.src=`https://firebasestorage.googleapis.com/v0/b/website-325dd.appspot.com/o/ProjectVideo%2F${vidsrc[j]}?alt=media&token=22d1e4c4-84e6-4eb2-a351-c9c2374f197e`;
+        video.parentElement.load();
+      } else {
+        video.src="assets/img/placeholder.mp4";
+      }
+    }
+    j++;
+  });
+};
 // clipover.addEventListener("mouseout", function (e) { 
 //     clip.pause(); 
 // });
